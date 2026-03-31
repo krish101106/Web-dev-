@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* Part-1 : univarsal styles and variables */
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+/* ::-webkit-scrollbar-track {
+    background: red;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--liWhite);
+} */
+
+:root{
+    --small-radi : 4px;
+    --med-radi : 8px;
+    --large-radi : 12px;
+
+    --black : rgb(0,0,0);
+    --grey : #737171;
+    --daGrey : #414040;
+    --platinum : #E5E4E2;
+    --charcoal : #333333;
+    --silver : #C0C0C0;
+    --darksilver : #A9A8A7;
+    --darkgold : #956d07;
+    --offwhite : #f8f8f8;
+    --darknavyblue : #010117;
+    --darkcrimson : #1f0000;
+
+    --vfast : 0.30s;
+    --fast : 0.50s;
+    --med : 0.70s;
+    --slow : 1.0s;
+    --vslow : 1.5s;
+
+    --mfont: 16px;
+    --sfont: 14px;
+    --bfont: 22px;
+}
+
+/* Part-2.1 : nav styles */
+
+nav .top{
+    position: relative;
+    height: 50px;
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+nav .top a{
+    text-decoration: none;
+    color: var(--black);
+}
+
+nav .top .logo a{
+    
+    font-size: 22px;
+    
+}
+
+nav .top .logo {
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+}
+
+nav .top::after {
+    content: "";
+    position: absolute;
+    height: 2.5px;
+    bottom: 0px;
+    left: 0px;
+    width: 0%;
+    background-color: black;
+    transition: all var(--slow) ease-in-out;
+}
+
+nav .top:hover::after{
+    
+    width: 100%;
+    left: 100%;
+}
+
+
+/* Part-2.2 : saerch bar and search button */
+
+nav .top .search{
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+nav .top .search input{
+    width: 400px;
+    height: 20px;
+    border: 0.5px solid var(--daGrey);
+    background-color: var(--offwhite);
+    border-radius: var(--small-radi);
+    padding: 5px;
+    margin: 5px;
+    outline: none;
+    transition: all var(--vfast) ease-out;
+}
+
+nav .top .search input:focus{
+    border: 1px solid black;
+    box-shadow: 0 0 0 4px var(--daGrey);
+    transition: all var(--vfast) ease-in-out;
+}
+
+nav .top .search button{
+
+    height: 30px;
+    width: 80px;
+    padding: 5px;
+    margin: 5px;
+    border: 0px;
+    border: 0.5px solid var(--daGrey);
+    border-radius: var(--small-radi);
+    background-color: var(--offwhite);
+    color: var(--daGrey);
+    transition: all var(--vfast) ease-in-out;
+}
+
+nav .top .search button:hover{
+    border: 1px solid var(--daGrey);
+    background-color: var(--daGrey);
+    color: var(--liWhite);
+    transition: all var(--vfast) ease-in-out;
+
+
+}
+
+/* Part-2.3 : Menu */
+
+nav .top .menu{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+nav .top .menu ul {
+    display: flex;
+    padding: 4px 20px;
+    height: 30px;
+}
+
+nav .top .menu li {
+    position: relative;
+    list-style: none;
+    padding: 3px 15px;
+    height: 30px;
+}
+
+nav .top .menu li::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    height: 2px;
+    width: 0%;
+    background-color: black;
+    left: 0px;
+    transition: all 0.3s ease-in-out;
+    transform: scaleX(0);   
+}
+
+nav .top .menu li:hover::after{
+    width: 100%;
+    transform: scaleX(90%);
+}
+
+nav .top .menu .pro{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+
+
+
+/* Part-2.4 : Nav Bottom */
+
+nav .bottom{
+    position: relative;
+    height: 35px;
+    background-color: var(--platinum);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+nav .bottom a{
+    text-decoration: none;
+    color: var(--black);
+    font-size: var(--sfont);
+}
+
+nav .bottom ul{
+    display: flex;
+    align-items: center;
+    padding: 4px 20px;
+}
+
+nav .bottom li{
+    list-style: none;
+    padding: 3px 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+nav .bottom li::after{
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    height: 2px;
+    width: 0%;
+    background-color: black;
+    left: 0px;
+    transition: all 0.3s ease-in-out;
+    transform: scaleX(0%);
+}
+
+nav .bottom li:hover::after{
+    width: 100%;
+    transform: scaleX(90%);
+}
+
+
+main{
+    background-color: var(--charcoal);
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+main .book{
+    padding: 0px 3px;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+
+main .book .card{
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px; 
+    width: 200px;
+    /* height: 350px; */
+}
+
+main .book .card a{
+    text-decoration: none;
+}
+
+main .book .card img{
+    /* position: relative; */
+    width: 200px;
+    height: 300px;
+    border-radius: var(--med-radi);
+    box-shadow: 0 0 10px var(--daGrey);
+    margin: 0px 0px;
+    overflow: hidden;
+    transition: all var(--vfast) ease-in-out;
+}
+
+main .book .card img:hover{
+    box-shadow: 0 0 10px var(--grey);
+    transition: all var(--vfast) ease-in-out;
+}
+
+main .book .card .nm{
+    /* position: relative; */
+    font-size: var(--bfont);
+    color: var(--silver);
+    padding: 5px 0px;
+    font-weight: 450;
+}
+
+main .book .card .imdb{
+    /* position: relative; */
+    font-size: var(--mfont);
+    color: var(--grey);
+    padding: 0px 0px;
+    text-decoration: none;
+}
+
