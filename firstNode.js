@@ -1,0 +1,1 @@
+console.log("Helloooowwwww JS and NODE and a beautifull future, this is krish and i am sooo fucking excited to see youy allllll !!!!!")
