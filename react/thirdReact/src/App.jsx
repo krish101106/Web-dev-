@@ -12,8 +12,8 @@ function App() {
   return (
     <>
       <h1 className='bg-green-400 text-black rounded-xl p-4'>tailwind</h1>
-      <Card username="Krish"/> 
-      <Card username="Dharmit"/> 
+      <Card username="Krish" age={20}/> 
+      <Card username="Dharmit" /> 
     </>
   )
 }
