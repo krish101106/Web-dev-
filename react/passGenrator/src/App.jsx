@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 
 import './App.css'
 
@@ -7,6 +7,8 @@ function App() {
   const [number, setNumber]= useState(false)
   const [symbol, setSymbol]= useState(false)
   const [password, setPassword]= useState("")
+
+  const passwordReff=useRef(null)
 
   const passwordGenrator= useCallback(()=>{
       let pass=""
@@ -25,8 +27,16 @@ function App() {
 
     }, [length, number, symbol, setPassword])
 
+    const copyPass=useCallback(()=>{
+      passwordReff.current?.select()
+      window.navigator.clipboard.writeText(password)
+
+    }, [password])
 
 
+    useEffect(()=>{
+      passwordGenrator()
+    }, [length, passwordGenrator, number, symbol, setPassword])
 
   return (
   <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-4 my-8 text-orange-500 bg-gray-800">
@@ -38,15 +48,22 @@ function App() {
         value={password}
         className="outline-none w-full py-1 px-3"
         readOnly
+        ref={passwordReff}
         placeholder="Password"
       />
 
-      <button className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0">
+      <button 
+      onClick={copyPass}
+      className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0">
         Copy
       </button>
     </div>
 
-    {/* Controls */}
+    
+    <div className="flex items-center gap-x-2">
+
+
+      {/* Controls */}
     <div className="flex text-sm gap-x-2">
       <div className="flex items-center gap-x-2">
         <input
@@ -60,6 +77,24 @@ function App() {
         <label>Length: {length}</label>
       </div>
     </div>
+  <input
+    type="checkbox"
+    checked={symbol}
+    id="symbolInput"
+    onChange={() => setSymbol((prev) => !prev)}
+  />
+  <label htmlFor="symbolInput">Symbols</label>
+</div>
+
+<div className="flex items-center gap-x-2">
+  <input
+    type="checkbox"
+    checked={number}
+    id="numberInput"
+    onChange={() => setNumber((prev) => !prev)}
+  />
+  <label htmlFor="numberInput">Numbers</label>
+</div>
 
   </div>
 );
