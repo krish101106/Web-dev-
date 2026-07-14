@@ -38,66 +38,115 @@ function App() {
       passwordGenrator()
     }, [length, passwordGenrator, number, symbol, setPassword])
 
-  return (
-  <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-4 my-8 text-orange-500 bg-gray-800">
-    
-    {/* Password field */}
-    <div className="flex shadow rounded-lg overflow-hidden mb-4">
-      <input
-        type="text"
-        value={password}
-        className="outline-none w-full py-1 px-3"
-        readOnly
-        ref={passwordReff}
-        placeholder="Password"
-      />
+return (
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-black px-4">
 
-      <button 
-      onClick={copyPass}
-      className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0">
-        Copy
-      </button>
-    </div>
+    <div className="w-full max-w-xl rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl p-8">
 
-    
-    <div className="flex items-center gap-x-2">
+      <h1 className="text-3xl font-bold text-center text-white mb-2">
+        Password Generator
+      </h1>
 
+      <p className="text-center text-gray-400 mb-8">
+        Generate strong and secure passwords instantly.
+      </p>
 
-      {/* Controls */}
-    <div className="flex text-sm gap-x-2">
-      <div className="flex items-center gap-x-2">
+      {/* Password Box */}
+      <div className="flex rounded-2xl overflow-hidden bg-black/40 border border-white/10">
+
+        <input
+          ref={passwordReff}
+          value={password}
+          readOnly
+          placeholder="Your Password"
+          className="flex-1 bg-transparent px-5 py-4 text-lg text-green-400 tracking-widest outline-none"
+        />
+
+        <button
+          onClick={copyPass}
+          className="bg-indigo-600 hover:bg-indigo-500 active:scale-95 transition-all px-6 text-white font-semibold"
+        >
+          Copy
+        </button>
+
+      </div>
+
+      {/* Length */}
+      <div className="mt-8">
+
+        <div className="flex justify-between mb-2">
+          <span className="text-gray-300">Password Length</span>
+
+          <span className="text-indigo-400 font-semibold">
+            {length}
+          </span>
+        </div>
+
         <input
           type="range"
           min={6}
           max={100}
           value={length}
-          className="cursor-pointer"
-          onChange={(e)=>{setLength(e.target.value)}}
+          onChange={(e)=>setLength(e.target.value)}
+          className="w-full accent-indigo-500 cursor-pointer"
         />
-        <label>Length: {length}</label>
-      </div>
-    </div>
-  <input
-    type="checkbox"
-    checked={symbol}
-    id="symbolInput"
-    onChange={() => setSymbol((prev) => !prev)}
-  />
-  <label htmlFor="symbolInput">Symbols</label>
-</div>
 
-<div className="flex items-center gap-x-2">
-  <input
-    type="checkbox"
-    checked={number}
-    id="numberInput"
-    onChange={() => setNumber((prev) => !prev)}
-  />
-  <label htmlFor="numberInput">Numbers</label>
-</div>
+      </div>
+
+      {/* Checkboxes */}
+
+      <div className="mt-8 grid grid-cols-2 gap-4">
+
+        <label className="flex items-center justify-between rounded-xl bg-white/5 border border-white/10 px-4 py-3 cursor-pointer">
+
+          <span className="text-gray-300">
+            Numbers
+          </span>
+
+          <input
+            type="checkbox"
+            checked={number}
+            onChange={()=>setNumber(prev=>!prev)}
+            className="w-5 h-5 accent-indigo-500"
+          />
+
+        </label>
+
+        <label className="flex items-center justify-between rounded-xl bg-white/5 border border-white/10 px-4 py-3 cursor-pointer">
+
+          <span className="text-gray-300">
+            Symbols
+          </span>
+
+          <input
+            type="checkbox"
+            checked={symbol}
+            onChange={()=>setSymbol(prev=>!prev)}
+            className="w-5 h-5 accent-indigo-500"
+          />
+
+        </label>
+
+      </div>
+
+      {/* Footer */}
+
+      <div className="mt-8 flex justify-between text-sm text-gray-500">
+
+        <span>
+          Strength:
+        </span>
+
+        <span className="text-green-400 font-medium">
+          Strong
+        </span>
+
+      </div>
+
+    </div>
 
   </div>
-);
+)
 }
 
 export default App
