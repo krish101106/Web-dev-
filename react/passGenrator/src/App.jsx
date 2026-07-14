@@ -14,7 +14,7 @@ function App() {
       let pass=""
       let str="ABCDEFGHIJKLMNOPORSTUVWXYZabcdefghijkImnopqrstuvwxyz"
 
-      if(length) str+="0123456789"
+      if(number) str+="0123456789"
       if(symbol) str+="~`!@#$%^&*()_+=-{}[]:;''<>?/.,|"
 
       for (let i = 0; i < length; i++) {
